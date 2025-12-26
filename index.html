@@ -415,9 +415,10 @@
                             alt="Asistente Estudiantil" class="w-48 h-auto drop-shadow-lg">
                     </div>
                 </div>
-
-                <div
-                    class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-8 flex flex-col justify-center shadow-xl border border-white relative z-20">
+                
+                <!-- AQUI ESTA EL CAMBIO: Se agregó ID y scroll-margin -->
+                <div id="caja-whatsapp"
+                    class="scroll-mt-24 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-8 flex flex-col justify-center shadow-xl border border-white relative z-20">
                     <h3 class="text-3xl font-bold text-gray-800 mb-4">Solicita Información</h3>
                     <p class="text-gray-600 mb-8">Selecciona el tipo de servicio que necesitas y chatea directamente con
                         un asesor:</p>
@@ -540,8 +541,8 @@
         </div>
     </footer>
 
-    <!-- Botón Flotante WhatsApp -->
-    <a href="#contacto"
+    <!-- Botón Flotante WhatsApp - CAMBIADO EL HREF A #caja-whatsapp -->
+    <a href="#caja-whatsapp"
        class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-green-500 text-white rounded-full shadow-lg flex items-center justify-center hover:bg-green-600 transition-all duration-300 hover:scale-110 hover:-translate-y-1 whatsapp-pulse group">
         <i class="fab fa-whatsapp text-3xl"></i>
     </a>
