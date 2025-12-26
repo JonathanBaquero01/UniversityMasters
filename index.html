@@ -124,6 +124,16 @@
         .animate-math {
             animation: floatMath 8s infinite ease-in-out;
         }
+        
+        /* Animación de pulso personalizada para el botón de WhatsApp */
+        @keyframes pulse-custom {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+        }
+        
+        .whatsapp-pulse {
+            animation: pulse-custom 2s infinite;
+        }
     </style>
 </head>
 
@@ -168,7 +178,7 @@
         <div class="math-symbol text-3xl bottom-5 left-5 md:text-6xl md:bottom-1/4 md:left-1/4 animate-math" style="animation-delay: 4s;">π</div>
         <!-- Abajo Derecha -->
         <div class="math-symbol text-3xl bottom-5 right-5 md:text-4xl md:bottom-20 md:right-1/3 animate-math" style="animation-delay: 1s;">∑</div>
-        <!-- Oculto en móvil (demasiados elementos) -->
+        <!-- Oculto en móvil -->
         <div class="math-symbol hidden md:block text-5xl top-20 right-1/4 animate-math" style="animation-delay: 3s;">√x</div>
 
         <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
@@ -529,6 +539,12 @@
             </div>
         </div>
     </footer>
+
+    <!-- Botón Flotante WhatsApp -->
+    <a href="#contacto"
+       class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-green-500 text-white rounded-full shadow-lg flex items-center justify-center hover:bg-green-600 transition-all duration-300 hover:scale-110 hover:-translate-y-1 whatsapp-pulse group">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
 
     <!-- Modals -->
     <!-- Modal 1: Trabajos Académicos -->
