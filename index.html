@@ -19,6 +19,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -60,29 +61,27 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            transition: transform 0.3s ease;
+            transition: transform 0.4s ease-in-out;
+            cursor: default;
         }
 
-        .evidence-container:hover .evidence-img {
+        .group:hover .evidence-img {
             transform: scale(1.05);
         }
 
-        /* --- FONDOS DECORATIVOS --- */
+        /* --- FONDOS DECORATIVOS Y MATEMÁTICOS --- */
 
-        /* Patrón de puntos para Servicios */
         .bg-pattern-dots {
             background-image: radial-gradient(#e5e7eb 1.5px, transparent 1.5px);
             background-size: 24px 24px;
         }
 
-        /* Patrón de cuadrícula para Recursos */
         .bg-pattern-grid {
             background-size: 40px 40px;
             background-image: linear-gradient(to right, #f3f4f6 1px, transparent 1px),
                 linear-gradient(to bottom, #f3f4f6 1px, transparent 1px);
         }
 
-        /* Decoración de fondo (Blobs) */
         .blob {
             position: absolute;
             border-radius: 50%;
@@ -91,9 +90,11 @@
             opacity: 0.6;
         }
 
-        /* Animación suave para los blobs */
+        /* Animación de Blobs */
         @keyframes floatBlob {
-            0% {
+
+            0%,
+            100% {
                 transform: translate(0, 0) scale(1);
             }
 
@@ -104,14 +105,48 @@
             66% {
                 transform: translate(-20px, 20px) scale(0.9);
             }
-
-            100% {
-                transform: translate(0, 0) scale(1);
-            }
         }
 
         .animate-blob-slow {
             animation: floatBlob 10s infinite ease-in-out;
+        }
+
+        /* --- NUEVO: Elementos Matemáticos Flotantes (Más Visibles) --- */
+        .math-symbol {
+            position: absolute;
+            /* Color morado/índigo con más opacidad (0.4 en lugar de 0.15) */
+            color: rgba(79, 70, 229, 0.4);
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            font-weight: bold;
+            z-index: 0;
+            pointer-events: none;
+            user-select: none;
+            /* Pequeña sombra para dar contraste contra el fondo blanco */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        @keyframes floatMath {
+
+            /* Rangos de opacidad aumentados: de 0.4 a 0.8 */
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.4;
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.4;
+            }
+        }
+
+        .animate-math {
+            animation: floatMath 8s infinite ease-in-out;
         }
     </style>
 </head>
@@ -143,11 +178,20 @@
     <section id="inicio" class="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div id="vanta-bg" class="absolute inset-0"></div>
 
-        <!-- DECORACIÓN HERO -->
-        <div class="absolute top-0 left-0 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob-slow"
+        <!-- DECORACIÓN HERO: Blobs + Matemáticas -->
+        <div class="absolute top-0 left-0 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob-slow"
             style="animation-delay: 0s;"></div>
-        <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob-slow"
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob-slow"
             style="animation-delay: 2s;"></div>
+        <div class="absolute top-1/2 left-1/3 w-80 h-80 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob-slow"
+            style="animation-delay: 4s;"></div>
+
+        <!-- Fórmulas Matemáticas Flotantes (Hero) - Texto Grande y Visible -->
+        <div class="math-symbol text-7xl top-1/4 left-10 animate-math" style="animation-delay: 0s;">∫</div>
+        <div class="math-symbol text-5xl top-1/3 right-20 animate-math" style="animation-delay: 2s;">E = mc²</div>
+        <div class="math-symbol text-6xl bottom-1/4 left-1/4 animate-math" style="animation-delay: 4s;">π</div>
+        <div class="math-symbol text-4xl bottom-20 right-1/3 animate-math" style="animation-delay: 1s;">∑</div>
+        <div class="math-symbol text-5xl top-20 right-1/4 animate-math" style="animation-delay: 3s;">√x</div>
 
         <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
             <h1 class="hero-title text-5xl md:text-7xl font-bold mb-6 gradient-text">
@@ -167,21 +211,26 @@
 
     <!-- Services Section -->
     <section id="servicios" class="py-20 bg-white relative overflow-hidden">
-        <!-- Decoración de fondo: Patrón de Puntos -->
         <div class="absolute inset-0 bg-pattern-dots opacity-50 z-0"></div>
 
-        <!-- DECORACIÓN: Manchas de color distribuidas -->
+        <!-- Blobs -->
         <div
             class="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob-slow">
         </div>
         <div class="absolute bottom-0 left-0 w-96 h-96 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob-slow"
             style="animation-delay: 2s;"></div>
-        <!-- Nueva mancha naranja para combinar con la tarjeta de exámenes -->
-        <div class="absolute top-1/2 left-1/4 w-72 h-72 bg-orange-50 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob-slow"
+        <div class="absolute top-1/2 left-1/4 w-72 h-72 bg-orange-100 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob-slow"
             style="animation-delay: 4s;"></div>
-        <!-- Nueva mancha índigo suave en el centro -->
-        <div class="absolute top-1/3 right-1/4 w-80 h-80 bg-indigo-50 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob-slow"
+        <div class="absolute top-1/3 right-1/4 w-80 h-80 bg-indigo-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob-slow"
             style="animation-delay: 1s;"></div>
+        <div class="absolute bottom-10 right-10 w-64 h-64 bg-yellow-100 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob-slow"
+            style="animation-delay: 3s;"></div>
+
+        <!-- Fórmulas Matemáticas (Servicios) -->
+        <div class="math-symbol text-6xl top-10 left-10 animate-math">x² + y²</div>
+        <div class="math-symbol text-7xl bottom-1/3 right-10 animate-math" style="animation-delay: 2s;">∞</div>
+        <div class="math-symbol text-5xl top-1/2 left-10 animate-math" style="animation-delay: 1.5s;">sin(θ)</div>
+        <div class="math-symbol text-4xl bottom-10 left-1/3 animate-math" style="animation-delay: 3.5s;">log₂</div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16">
@@ -191,8 +240,7 @@
                 </p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-                <!-- Tarjeta 1: Trabajos académicos -->
+                <!-- Tarjeta 1 -->
                 <div
                     class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 hover-lift shadow-lg border border-white">
                     <div class="w-16 h-16 bg-blue-500 rounded-xl flex items-center justify-center mb-6">
@@ -205,8 +253,7 @@
                         Nuestros clientes 👥 <i class="fas fa-arrow-right ml-2"></i>
                     </button>
                 </div>
-
-                <!-- Tarjeta 2: Exámenes en vivo -->
+                <!-- Tarjeta 2 -->
                 <div
                     class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-8 hover-lift shadow-lg border border-white">
                     <div class="w-16 h-16 bg-orange-500 rounded-xl flex items-center justify-center mb-6">
@@ -220,8 +267,7 @@
                         Nuestros clientes 👥 <i class="fas fa-arrow-right ml-2"></i>
                     </button>
                 </div>
-
-                <!-- Tarjeta 3: Investigaciones -->
+                <!-- Tarjeta 3 -->
                 <div
                     class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-8 hover-lift shadow-lg border border-white">
                     <div class="w-16 h-16 bg-purple-500 rounded-xl flex items-center justify-center mb-6">
@@ -243,11 +289,21 @@
         <div class="absolute inset-0 bg-pattern-grid z-0"></div>
         <div class="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white z-0"></div>
 
-        <!-- DECORACIÓN RECURSOS -->
+        <!-- Blobs -->
         <div class="absolute top-1/3 left-0 w-80 h-80 bg-green-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob-slow"
             style="animation-delay: 1s;"></div>
         <div class="absolute bottom-1/4 right-0 w-80 h-80 bg-orange-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob-slow"
             style="animation-delay: 3s;"></div>
+        <div class="absolute top-10 right-20 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob-slow"
+            style="animation-delay: 0s;"></div>
+        <div class="absolute bottom-0 left-20 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob-slow"
+            style="animation-delay: 5s;"></div>
+
+        <!-- Fórmulas Matemáticas (Recursos) -->
+        <div class="math-symbol text-5xl top-20 left-1/3 animate-math">f(x)</div>
+        <div class="math-symbol text-6xl bottom-1/3 right-1/4 animate-math" style="animation-delay: 1s;">∂y/∂x</div>
+        <div class="math-symbol text-4xl top-1/2 left-20 animate-math" style="animation-delay: 4s;">10101</div>
+        <div class="math-symbol text-7xl bottom-10 right-20 animate-math" style="animation-delay: 2.5s;">{ }</div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16">
@@ -321,9 +377,17 @@
 
     <!-- Contact Section -->
     <section id="contacto" class="py-24 bg-white relative overflow-hidden">
+        <!-- Blobs -->
         <div class="blob w-80 h-80 bg-blue-100 top-10 left-1/3 mix-blend-multiply opacity-70"></div>
         <div class="blob w-96 h-96 bg-pink-100 bottom-0 left-0 mix-blend-multiply opacity-50 filter blur-3xl animate-blob-slow"
             style="animation-delay: 4s;"></div>
+        <div class="absolute top-1/3 right-0 w-80 h-80 bg-indigo-100 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob-slow"
+            style="animation-delay: 2s;"></div>
+
+        <!-- Fórmulas Matemáticas (Contacto) -->
+        <div class="math-symbol text-6xl top-10 right-20 animate-math" style="animation-delay: 1s;">%</div>
+        <div class="math-symbol text-5xl bottom-20 left-20 animate-math" style="animation-delay: 3s;">≠</div>
+        <div class="math-symbol text-7xl top-1/2 right-10 animate-math" style="animation-delay: 0.5s;">+</div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -467,6 +531,14 @@
         <div
             class="absolute -bottom-20 -left-20 w-96 h-96 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 pointer-events-none">
         </div>
+        <div
+            class="absolute top-0 right-0 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 pointer-events-none animate-blob-slow">
+        </div>
+
+        <!-- Fórmulas Matemáticas (Footer) - Blancas y visibles -->
+        <div class="math-symbol text-5xl top-10 left-20 animate-math" style="color: rgba(255,255,255,0.3);">∫eˣ</div>
+        <div class="math-symbol text-6xl bottom-10 right-1/3 animate-math"
+            style="color: rgba(255,255,255,0.3); animation-delay: 2s;">Δy</div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -493,7 +565,7 @@
                     <h4 class="font-semibold mb-4">Garantía</h4>
                     <ul class="space-y-2 text-gray-400">
                         <li><a href="#" class="hover:text-white transition-colors">Devolución total</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Satisfacción garantizada</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">si no era lo que esperabas</a></li>
                     </ul>
                 </div>
                 <div>
@@ -517,7 +589,7 @@
         <div class="bg-white rounded-2xl w-full max-w-4xl overflow-hidden shadow-2xl animate-[fadeIn_0.3s_ease-out]">
             <div class="bg-gradient-to-r from-blue-500 to-blue-600 p-6 flex justify-between items-center">
                 <h3 class="text-2xl font-bold text-white flex items-center"><i
-                        class="fas fa-chalkboard-teacher mr-3"></i>Evidencia: Trabajos Académicos</h3>
+                        class="fas fa-chalkboard-teacher mr-3"></i>Trabajos Académicos</h3>
                 <button onclick="closeModal('modalTrabajos')"
                     class="text-white hover:text-gray-200 transition-colors"><i
                         class="fas fa-times text-2xl"></i></button>
@@ -526,15 +598,17 @@
                 <p class="text-gray-600 mb-6 text-center text-lg">Resultados y satisfacción garantizada.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="space-y-2">
+                        <!-- AUMENTADO A h-[450px] -->
                         <div
-                            class="bg-gray-100 rounded-lg overflow-hidden border border-gray-200 relative h-80 flex items-center justify-center group">
+                            class="bg-gray-100 rounded-lg overflow-hidden border border-gray-200 relative h-[450px] flex items-center justify-center group">
                             <img src="https://i.ibb.co/NgBtsjrc/Trabajo1.jpg" alt="Trabajo1" class="evidence-img">
                         </div>
                         <p class="text-center font-medium text-blue-600">Nuestros clientes</p>
                     </div>
                     <div class="space-y-2">
+                        <!-- AUMENTADO A h-[450px] -->
                         <div
-                            class="bg-gray-100 rounded-lg overflow-hidden border border-gray-200 relative h-80 flex items-center justify-center group">
+                            class="bg-gray-100 rounded-lg overflow-hidden border border-gray-200 relative h-[450px] flex items-center justify-center group">
                             <img src="https://i.ibb.co/zW85hRz2/Trabajo2.jpg" alt="Trabajo2" class="evidence-img">
                         </div>
                         <p class="text-center font-medium text-blue-600">Nuestros clientes</p>
@@ -564,15 +638,17 @@
                 <p class="text-gray-600 mb-6 text-center text-lg">Resultados y satisfacción garantizada.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="space-y-2">
+                        <!-- AUMENTADO A h-[450px] -->
                         <div
-                            class="bg-gray-100 rounded-lg overflow-hidden border border-gray-200 relative h-80 flex items-center justify-center group">
+                            class="bg-gray-100 rounded-lg overflow-hidden border border-gray-200 relative h-[450px] flex items-center justify-center group">
                             <img src="https://i.ibb.co/rfqg2vCq/Parcial-1.png" alt="Parcial-1" class="evidence-img">
                         </div>
                         <p class="text-center font-medium text-orange-600">Nuestros clientes</p>
                     </div>
                     <div class="space-y-2">
+                        <!-- AUMENTADO A h-[450px] -->
                         <div
-                            class="bg-gray-100 rounded-lg overflow-hidden border border-gray-200 relative h-80 flex items-center justify-center group">
+                            class="bg-gray-100 rounded-lg overflow-hidden border border-gray-200 relative h-[450px] flex items-center justify-center group">
                             <img src="https://i.ibb.co/hxrY3c6c/Parcial-2.png" alt="Parcial-2" class="evidence-img">
                         </div>
                         <p class="text-center font-medium text-orange-600">Nuestros clientes</p>
@@ -593,24 +669,28 @@
         <div class="bg-white rounded-2xl w-full max-w-4xl overflow-hidden shadow-2xl animate-[fadeIn_0.3s_ease-out]">
             <div class="bg-gradient-to-r from-purple-500 to-purple-600 p-6 flex justify-between items-center">
                 <h3 class="text-2xl font-bold text-white flex items-center"><i
-                        class="fas fa-laptop-code mr-3"></i>Evidencia: Investigaciones</h3>
+                        class="fas fa-laptop-code mr-3"></i>Investigaciones</h3>
                 <button onclick="closeModal('modalInvestigaciones')"
                     class="text-white hover:text-gray-200 transition-colors"><i
                         class="fas fa-times text-2xl"></i></button>
             </div>
             <div class="p-8 max-h-[80vh] overflow-y-auto">
-                <p class="text-gray-600 mb-6 text-center text-lg">Calidad en tesis y monografías.</p>
+                <p class="text-gray-600 mb-6 text-center text-lg">Resultados y satisfacción garantizada.
+
+                </p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="space-y-2">
+                        <!-- AUMENTADO A h-[450px] -->
                         <div
-                            class="bg-gray-100 rounded-lg overflow-hidden border border-gray-200 relative h-80 flex items-center justify-center group">
+                            class="bg-gray-100 rounded-lg overflow-hidden border border-gray-200 relative h-[450px] flex items-center justify-center group">
                             <img src="https://i.ibb.co/wNbV5tjw/Grado1.png" alt="Grado 1" class="evidence-img">
                         </div>
                         <p class="text-center font-medium text-purple-600">Nuestros clientes</p>
                     </div>
                     <div class="space-y-2">
+                        <!-- AUMENTADO A h-[450px] -->
                         <div
-                            class="bg-gray-100 rounded-lg overflow-hidden border border-gray-200 relative h-80 flex items-center justify-center group">
+                            class="bg-gray-100 rounded-lg overflow-hidden border border-gray-200 relative h-[450px] flex items-center justify-center group">
                             <img src="https://i.ibb.co/HDxdpbyB/Grado2.png" alt="Grado 2" class="evidence-img">
                         </div>
                         <p class="text-center font-medium text-purple-600">Nuestros clientes</p>
@@ -625,63 +705,69 @@
         </div>
     </div>
 
-    <!-- Modales de Ejemplo Materias -->
+    <!-- Modales de Ejemplo Materias MEJORADOS (Responsivos y Estéticos) -->
     <div id="modalRedaccion"
         class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center z-[70] p-4 backdrop-blur-sm">
-        <div class="bg-white rounded-2xl w-full max-w-3xl overflow-hidden shadow-2xl">
-            <div class="bg-blue-600 p-4 flex justify-between items-center text-white">
+        <!-- Contenedor Responsivo: ancho automático hasta 90%, altura máxima 90vh -->
+        <div
+            class="bg-white rounded-2xl w-auto max-w-[95%] md:max-w-6xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh] animate-[fadeIn_0.3s_ease-out]">
+            <div class="bg-blue-600 p-4 flex justify-between items-center text-white shrink-0">
                 <h3 class="font-bold text-lg"><i class="fas fa-book-open mr-2"></i>Ejemplo: Redacción</h3>
                 <button onclick="closeModal('modalRedaccion')" class="hover:text-gray-200"><i
                         class="fas fa-times text-xl"></i></button>
             </div>
-            <div class="p-6 h-[70vh] flex items-center justify-center bg-gray-50">
+            <!-- Cuerpo con fondo gris y padding para enmarcar la imagen -->
+            <div class="p-6 bg-gray-200 flex items-center justify-center flex-1 overflow-hidden">
                 <img src="https://i.ibb.co/d0q5J4vn/Redaccion.png" alt="Ejemplo Redacción"
-                    class="max-w-full max-h-full object-contain rounded-lg shadow-lg">
+                    class="max-w-full max-h-full object-contain shadow-lg rounded-md transition-transform duration-500 hover:scale-[1.02] cursor-default bg-white">
             </div>
         </div>
     </div>
 
     <div id="modalArtisticas"
         class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center z-[70] p-4 backdrop-blur-sm">
-        <div class="bg-white rounded-2xl w-full max-w-3xl overflow-hidden shadow-2xl">
-            <div class="bg-green-600 p-4 flex justify-between items-center text-white">
+        <div
+            class="bg-white rounded-2xl w-auto max-w-[95%] md:max-w-6xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh] animate-[fadeIn_0.3s_ease-out]">
+            <div class="bg-green-600 p-4 flex justify-between items-center text-white shrink-0">
                 <h3 class="font-bold text-lg"><i class="fas fa-palette mr-2"></i>Ejemplo: Artísticas</h3>
                 <button onclick="closeModal('modalArtisticas')" class="hover:text-gray-200"><i
                         class="fas fa-times text-xl"></i></button>
             </div>
-            <div class="p-6 h-[70vh] flex items-center justify-center bg-gray-50">
+            <div class="p-6 bg-gray-200 flex items-center justify-center flex-1 overflow-hidden">
                 <img src="https://i.ibb.co/39RnqBQL/Arte.png" alt="Ejemplo Artísticas"
-                    class="max-w-full max-h-full object-contain rounded-lg shadow-lg">
+                    class="max-w-full max-h-full object-contain shadow-lg rounded-md transition-transform duration-500 hover:scale-[1.02] cursor-default bg-white">
             </div>
         </div>
     </div>
 
     <div id="modalIngenierias"
         class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center z-[70] p-4 backdrop-blur-sm">
-        <div class="bg-white rounded-2xl w-full max-w-3xl overflow-hidden shadow-2xl">
-            <div class="bg-purple-600 p-4 flex justify-between items-center text-white">
+        <div
+            class="bg-white rounded-2xl w-auto max-w-[95%] md:max-w-6xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh] animate-[fadeIn_0.3s_ease-out]">
+            <div class="bg-purple-600 p-4 flex justify-between items-center text-white shrink-0">
                 <h3 class="font-bold text-lg"><i class="fas fa-cogs mr-2"></i>Ejemplo: Ingenierías</h3>
                 <button onclick="closeModal('modalIngenierias')" class="hover:text-gray-200"><i
                         class="fas fa-times text-xl"></i></button>
             </div>
-            <div class="p-6 h-[70vh] flex items-center justify-center bg-gray-50">
+            <div class="p-6 bg-gray-200 flex items-center justify-center flex-1 overflow-hidden">
                 <img src="https://i.ibb.co/0RXS2bbW/Ingenierias.png" alt="Ejemplo Ingenierías"
-                    class="max-w-full max-h-full object-contain rounded-lg shadow-lg">
+                    class="max-w-full max-h-full object-contain shadow-lg rounded-md transition-transform duration-500 hover:scale-[1.02] cursor-default bg-white">
             </div>
         </div>
     </div>
 
     <div id="modalMatematicas"
         class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center z-[70] p-4 backdrop-blur-sm">
-        <div class="bg-white rounded-2xl w-full max-w-3xl overflow-hidden shadow-2xl">
-            <div class="bg-orange-600 p-4 flex justify-between items-center text-white">
+        <div
+            class="bg-white rounded-2xl w-auto max-w-[95%] md:max-w-6xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh] animate-[fadeIn_0.3s_ease-out]">
+            <div class="bg-orange-600 p-4 flex justify-between items-center text-white shrink-0">
                 <h3 class="font-bold text-lg"><i class="fas fa-calculator mr-2"></i>Ejemplo: Matemáticas</h3>
                 <button onclick="closeModal('modalMatematicas')" class="hover:text-gray-200"><i
                         class="fas fa-times text-xl"></i></button>
             </div>
-            <div class="p-6 h-[70vh] flex items-center justify-center bg-gray-50">
+            <div class="p-6 bg-gray-200 flex items-center justify-center flex-1 overflow-hidden">
                 <img src="https://i.ibb.co/1f82gQD7/Matematica.png" alt="Ejemplo Matemáticas"
-                    class="max-w-full max-h-full object-contain rounded-lg shadow-lg">
+                    class="max-w-full max-h-full object-contain shadow-lg rounded-md transition-transform duration-500 hover:scale-[1.02] cursor-default bg-white">
             </div>
         </div>
     </div>
