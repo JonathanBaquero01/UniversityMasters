@@ -6,9 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UniversityMasters - Plataforma de Asesoría Estudiantil</title>
 
-    <!-- LOGO NAVEGADOR -->
-    <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%236366f1;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%239333ea;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='url(%23grad)'/%3E%3Ctext x='50' y='70' font-size='60' text-anchor='middle' fill='white'%3E🎓%3C/text%3E%3C/svg%3E">
+    <!-- LOGO NAVEGADOR (FAVICON) -->
+    <link rel="icon" type="image/png" href="https://i.ibb.co/TBVN7q4H/Chat-GPT-Image-2-ene-2026-12-04-26.png">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -142,11 +141,11 @@
     <nav class="fixed top-0 w-full z-50 glass-effect border-b border-white/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <div class="flex items-center space-x-2">
-                    <div
-                        class="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center">
-                        <i class="fas fa-graduation-cap text-white text-sm"></i>
-                    </div>
+                <div class="flex items-center space-x-3">
+                    <!-- LOGO AJUSTADO: Se cambió w-12 h-12 por w-10 h-10 para hacerlo más pequeño -->
+                    <img src="https://i.ibb.co/TBVN7q4H/Chat-GPT-Image-2-ene-2026-12-04-26.png" 
+                         alt="UniversityMasters Logo" 
+                         class="w-10 h-10 object-contain rounded-full shadow-sm hover:scale-105 transition-transform">
                     <span class="hero-title text-xl font-semibold text-gray-800">University Masters</span>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
@@ -169,16 +168,11 @@
         <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob-slow" style="animation-delay: 2s;"></div>
         <div class="absolute top-1/2 left-1/3 w-80 h-80 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob-slow" style="animation-delay: 4s;"></div>
 
-        <!-- Fórmulas Matemáticas Flotantes (Hero) - RESPONSIVO: Esquinas y pequeños en móvil -->
-        <!-- Arriba Izquierda -->
+        <!-- Fórmulas Matemáticas Flotantes (Hero) -->
         <div class="math-symbol text-4xl top-5 left-5 md:text-7xl md:top-1/4 md:left-10 animate-math" style="animation-delay: 0s;">∫</div>
-        <!-- Arriba Derecha -->
         <div class="math-symbol text-2xl top-5 right-5 md:text-5xl md:top-1/3 md:right-20 animate-math" style="animation-delay: 2s;">E = mc²</div>
-        <!-- Abajo Izquierda -->
         <div class="math-symbol text-3xl bottom-5 left-5 md:text-6xl md:bottom-1/4 md:left-1/4 animate-math" style="animation-delay: 4s;">π</div>
-        <!-- Abajo Derecha -->
         <div class="math-symbol text-3xl bottom-5 right-5 md:text-4xl md:bottom-20 md:right-1/3 animate-math" style="animation-delay: 1s;">∑</div>
-        <!-- Oculto en móvil -->
         <div class="math-symbol hidden md:block text-5xl top-20 right-1/4 animate-math" style="animation-delay: 3s;">√x</div>
 
         <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
@@ -416,7 +410,6 @@
                     </div>
                 </div>
                 
-                <!-- AQUI ESTA EL CAMBIO: Se agregó ID y scroll-margin -->
                 <div id="caja-whatsapp"
                     class="scroll-mt-24 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-8 flex flex-col justify-center shadow-xl border border-white relative z-20">
                     <h3 class="text-3xl font-bold text-gray-800 mb-4">Solicita Información</h3>
@@ -502,11 +495,11 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
-                    <div class="flex items-center space-x-2 mb-4">
-                        <div
-                            class="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center">
-                            <i class="fas fa-graduation-cap text-white text-sm"></i>
-                        </div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <!-- LOGO ACTUALIZADO EN FOOTER -->
+                        <img src="https://i.ibb.co/TBVN7q4H/Chat-GPT-Image-2-ene-2026-12-04-26.png" 
+                         alt="UniversityMasters Logo" 
+                         class="w-10 h-10 object-contain rounded-full bg-white/10 p-1">
                         <span class="hero-title text-xl font-semibold">University Masters</span>
                     </div>
                     <p class="text-gray-400 mb-4">Potenciando el talento académico de cada estudiante mediante asesoría
@@ -531,7 +524,7 @@
                     <h4 class="font-semibold mb-4">Contacto</h4>
                     <ul class="space-y-2 text-gray-400">
                         <li><i class="fas fa-envelope mr-2"></i>info@universitymasters.com</li>
-                        <li><i class="fas fa-phone mr-2"></i>999999999</li>
+                        <li><i class="fas fa-phone mr-2"></i>+57 304 6174215/li>
                     </ul>
                 </div>
             </div>
@@ -541,7 +534,7 @@
         </div>
     </footer>
 
-    <!-- Botón Flotante WhatsApp - CAMBIADO EL HREF A #caja-whatsapp -->
+    <!-- Botón Flotante WhatsApp -->
     <a href="#caja-whatsapp"
        class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-green-500 text-white rounded-full shadow-lg flex items-center justify-center hover:bg-green-600 transition-all duration-300 hover:scale-110 hover:-translate-y-1 whatsapp-pulse group">
         <i class="fab fa-whatsapp text-3xl"></i>
